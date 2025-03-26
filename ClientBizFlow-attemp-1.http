@@ -1,0 +1,6 @@
+@ClientBizFlow_attemp_1_HostAddress = http://localhost:5296
+
+GET {{ClientBizFlow_attemp_1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
