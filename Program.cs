@@ -33,20 +33,7 @@ namespace ClientBizFlow_attemp_1
 
             app.MapControllers();
 
-            //Использовать StartupFilter
-            var lifetime = app.Services.GetRequiredService<IHostApplicationLifetime>();
-            lifetime.ApplicationStarted.Register(() =>
-            {
-                var _serviceProvider = builder.Services.BuildServiceProvider();
-                var jobsManager = _serviceProvider.GetRequiredService<IJobsManager>();
-
-                jobsManager.CrerateJob("BizFlowJob",
-                    "0/10 * * * * ?");
-            });
-
-
             app.Run();
-
 
         }
     }
