@@ -1,5 +1,5 @@
 
-using BizFlow.Core.Internal;
+using BizFlow.Core;
 using BizFlow.Core.Services.DI;
 
 namespace ClientBizFlow_attemp_1
@@ -14,6 +14,7 @@ namespace ClientBizFlow_attemp_1
 
             builder.Services.AddControllers();
             builder.Services.AddBizFlow();
+            builder.Services.AddScoped<IPipelineService, PipelineService>();
                        
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -34,7 +35,6 @@ namespace ClientBizFlow_attemp_1
             app.MapControllers();
 
             app.Run();
-
         }
     }
 }
