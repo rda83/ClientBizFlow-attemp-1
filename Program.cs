@@ -1,6 +1,7 @@
 
 using BizFlow.Core;
 using BizFlow.Core.Services.DI;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ClientBizFlow_attemp_1
 {
@@ -13,7 +14,7 @@ namespace ClientBizFlow_attemp_1
             // Add services to the container.
 
             builder.Services.AddControllers();
-            builder.Services.AddBizFlow();
+            builder.Services.AddBizFlow(typeof(Program).Assembly);
             builder.Services.AddScoped<IPipelineService, PipelineService>();
                        
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
