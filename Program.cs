@@ -1,5 +1,4 @@
-
-using BizFlow.Core;
+using BizFlow.Core.Contracts;
 using BizFlow.Core.Services.DI;
 using Microsoft.AspNetCore.Hosting;
 

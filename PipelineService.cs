@@ -1,4 +1,5 @@
-﻿using BizFlow.Core;
+﻿using BizFlow.Core.Contracts;
+using BizFlow.Core.Model;
 
 namespace ClientBizFlow_attemp_1
 {
@@ -14,7 +15,7 @@ namespace ClientBizFlow_attemp_1
                 {
                     Name = "BizFlowJob_10_sec",
                     CronExpression = "0/10 * * * * ?",
-                    PipelineItems = new List<string>(){ "FirstOperation" }
+                    PipelineItems = new List<PipelineItem>(){ new PipelineItem() { TypeOperationId = "FirstOperation" } }
                 },
                 //new Pipeline()
                 //{

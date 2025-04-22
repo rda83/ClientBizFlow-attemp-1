@@ -1,4 +1,5 @@
-﻿using BizFlow.Core;
+﻿using BizFlow.Core.Contracts;
+using BizFlow.Core.Model;
 
 namespace ClientBizFlow_attemp_1.Workers
 {
