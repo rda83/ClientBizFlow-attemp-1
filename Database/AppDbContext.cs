@@ -1,4 +1,5 @@
-﻿using ClientBizFlow_attemp_1.Database.Entities.Common;
+﻿using ClientBizFlow_attemp_1.Database.Entities.BizFlow;
+using ClientBizFlow_attemp_1.Database.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClientBizFlow_attemp_1.Database
@@ -10,6 +11,8 @@ namespace ClientBizFlow_attemp_1.Database
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<PipelineItem> PipelineItems { get; set; }
+        public DbSet<Pipeline> Pipelines { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
