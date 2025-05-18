@@ -1,6 +1,7 @@
 ﻿using BizFlow.Core.Contracts;
 using BizFlow.Core.Model;
 using ClientBizFlow_attemp_1.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClientBizFlow_attemp_1
 {
@@ -63,6 +64,11 @@ namespace ClientBizFlow_attemp_1
 
             await _context.Pipelines.AddAsync(pipelineEntity, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
+        }
+
+        public Task<bool> PipelineNameExist(string pipelineName, CancellationToken cancellationToken = default)
+        {
+            return _context.Pipelines.AnyAsync(i => i.Name == pipelineName, cancellationToken);
         }
     }
 }

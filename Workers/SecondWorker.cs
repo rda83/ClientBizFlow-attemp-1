@@ -4,8 +4,8 @@ using System.Text.Json;
 
 namespace ClientBizFlow_attemp_1.Workers
 {
-    [TypeOperationId("FirstOperation")]
-    public class FirstWorker : IBizFlowWorker
+    [TypeOperationId("SecondWorker")]
+    public class SecondWorker : IBizFlowWorker
     {
         public Task Run(WorkerContext ctx)
         {
@@ -14,7 +14,7 @@ namespace ClientBizFlow_attemp_1.Workers
 
         public Task<CheckOptionsResult> CheckOptions(JsonElement Options)
         {
-            return Task.FromResult(new CheckOptionsResult() { Success = false, Message = "Ошибка параметров FirstOperation" });
+            return Task.FromResult(new CheckOptionsResult() { Success = false, Message = "Ошибка параметров SecondWorker" });
         }
     }
 }
