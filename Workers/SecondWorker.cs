@@ -4,17 +4,17 @@ using System.Text.Json;
 
 namespace ClientBizFlow_attemp_1.Workers
 {
-    [TypeOperationId("SecondWorker")]
+    [TypeOperationId("SecondOperation")]
     public class SecondWorker : IBizFlowWorker
     {
-        public Task Run(WorkerContext ctx)
+        public async Task Run(WorkerContext ctx)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("SecondOperation");
         }
 
         public Task<CheckOptionsResult> CheckOptions(JsonElement Options)
         {
-            return Task.FromResult(new CheckOptionsResult() { Success = false, Message = "Ошибка параметров SecondWorker" });
+            return Task.FromResult(new CheckOptionsResult() { Success = true, Message = string.Empty });
         }
     }
 }

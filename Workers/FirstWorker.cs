@@ -9,12 +9,13 @@ namespace ClientBizFlow_attemp_1.Workers
     {
         public Task Run(WorkerContext ctx)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("FirstOperation");
+            return Task.CompletedTask;
         }
 
         public Task<CheckOptionsResult> CheckOptions(JsonElement Options)
         {
-            return Task.FromResult(new CheckOptionsResult() { Success = false, Message = "Ошибка параметров FirstOperation" });
+            return Task.FromResult(new CheckOptionsResult() { Success = true, Message = string.Empty });
         }
     }
 }

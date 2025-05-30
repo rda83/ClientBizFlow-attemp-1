@@ -7,41 +7,68 @@ namespace ClientBizFlow_attemp_1
 {
     public class PipelineService : IPipelineService
     {
-        private readonly List<Pipeline> _pipelineCollection;
         private readonly AppDbContext _context;
         public PipelineService(AppDbContext context)
         {
             _context = context;
+        }
 
+        public async Task<IReadOnlyCollection<Pipeline>> GetPipelinesAsync(CancellationToken cancellationToken = default)
+        {
+            var result = new List<Pipeline>();
 
-            _pipelineCollection = new List<Pipeline>()
+            try
             {
-                new Pipeline()
-                {
-                    Name = "BizFlowJob_10_sec",
-                    CronExpression = "0/10 * * * * ?",
-                    PipelineItems = new List<PipelineItem>(){ new PipelineItem() { TypeOperationId = "FirstOperation" } }
-                },
-                //new Pipeline()
-                //{
-                //    Name = "BizFlowJob_15_sec",
-                //    CronExpression = "0/15 * * * * ?"
-                //}
-            };
+                return await _context.Pipelines
+                    .AsNoTracking()
+                    .Select(entity => new Pipeline
+                    {
+                        Name = entity.Name,
+                        CronExpression = entity.CronExpression,
+                        Description = entity.Description,
+                        Blocked = entity.Blocked
+                    })
+                    .ToListAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public IReadOnlyCollection<Pipeline> GetPipelines()
+        public async Task<Pipeline?> GetPipelineAsync(string pipelineName, CancellationToken cancellationToken = default)
         {
-            return _pipelineCollection;
-        }
+            if (string.IsNullOrEmpty(pipelineName))
+            {
+                throw new ArgumentException("Имя пайплайна не может быть пустым", nameof(pipelineName)); // TODO:i18n
+            }
 
+            var query = _context.Pipelines.Where(i => i.Name == pipelineName)
+                .Include(i => i.PipelineItems)
+                .AsSplitQuery()
+                .AsNoTracking();
 
-        public Pipeline GetPipeline(string pipelineName)
-        {
-            var result = _pipelineCollection.Where(i => i.Name == pipelineName)
-                .FirstOrDefault();
+            var entity = await query.FirstOrDefaultAsync(cancellationToken);
 
-            return result;
+            if (entity == null) { return null; }
+
+            var pipeline = new Pipeline(); // TODO: Builder
+            pipeline.Name = entity.Name;
+            pipeline.CronExpression = entity.CronExpression;
+            pipeline.Description = entity.Description;
+            pipeline.Blocked = entity.Blocked;
+            pipeline.PipelineItems = entity.PipelineItems.Select(i =>
+            {
+                var item = new PipelineItem();
+                item.TypeOperationId = i.TypeOperationId;
+                item.SortOrder = i.SortOrder;
+                item.Description = i.Description;
+                item.Blocked = i.Blocked;
+                item.Options = i.Options;
+                return item;
+            }).ToList();
+
+            return pipeline;
         }
 
         public async Task AddPipelineAsync(Pipeline pipelineItem, CancellationToken cancellationToken = default)
