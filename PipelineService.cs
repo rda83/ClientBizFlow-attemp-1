@@ -28,7 +28,7 @@ namespace ClientBizFlow_attemp_1
                         Description = entity.Description,
                         Blocked = entity.Blocked
                     })
-                    .ToListAsync();
+                    .ToListAsync(cancellationToken);
             }
             catch (Exception)
             {

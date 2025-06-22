@@ -9,13 +9,60 @@ namespace ClientBizFlow_attemp_1.Workers
     {
         public Task Run(WorkerContext ctx)
         {
-            Console.WriteLine("FirstOperation");
+            var opt = GetOptions<FirstWorkerOpt>(ctx.Options);
+           
+            Console.WriteLine($"{ctx.PipelineName} - {ctx.CronExpression} - {ctx.TypeOperationId}");
+
+            Console.WriteLine($"{opt.Path}");
+            Console.WriteLine($"{opt.Count}");
+            Console.WriteLine($"{opt.ActiveOnly}");
+
             return Task.CompletedTask;
         }
 
-        public Task<CheckOptionsResult> CheckOptions(JsonElement Options)
+        public Task<CheckOptionsResult> CheckOptions(JsonElement options)
         {
-            return Task.FromResult(new CheckOptionsResult() { Success = true, Message = string.Empty });
+            var result = new CheckOptionsResult();
+
+            try
+            {
+                var optionsObj = GetOptions<FirstWorkerOpt>(options);
+                if (optionsObj == null)
+                {
+                    result.Success = false;
+                    result.Message = "Options cannot be null";
+                }
+                else
+                {
+                    result.Success = true;
+                }
+
+                result.Success = true;
+            }
+            catch (JsonException ex)
+            {
+                result.Message = $"Invalid JSON format: {ex.Message}";
+                result.Success = false;
+            }
+            catch (Exception ex)
+            {
+                result.Message = $"Validation failed: {ex.Message}";
+                result.Success = false;
+            }
+
+            return Task.FromResult(result);
+        }
+
+        public T? GetOptions<T>(JsonElement? options) where T : class
+        {
+            return options?.Deserialize<T>() ?? null;
+        }
+
+        private class FirstWorkerOpt
+        {
+            public string Path { get; set; }
+            public int Count { get; set; }
+            public bool ActiveOnly { get; set; }
         }
     }
 }
