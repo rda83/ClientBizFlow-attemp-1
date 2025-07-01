@@ -4,6 +4,7 @@ using System.Text.Json;
 using ClientBizFlow_attemp_1.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClientBizFlow_attemp_1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250701105441_ADD_010725_00_BizFlowJournalRecord")]
+    partial class ADD_010725_00_BizFlowJournalRecord
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +50,7 @@ namespace ClientBizFlow_attemp_1.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("Period")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("PipelineName")
                         .IsRequired()
@@ -57,9 +60,8 @@ namespace ClientBizFlow_attemp_1.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("TypeAction")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("TypeAction")
+                        .HasColumnType("integer");
 
                     b.Property<string>("TypeOperationId")
                         .IsRequired()

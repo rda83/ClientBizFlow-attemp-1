@@ -13,6 +13,7 @@ namespace ClientBizFlow_attemp_1.Database
         public DbSet<Product> Products { get; set; }
         public DbSet<PipelineItem> PipelineItems { get; set; }
         public DbSet<Pipeline> Pipelines { get; set; }
+        public DbSet<BizFlowJournalRecord> BizFlowJournalRecords { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,6 +22,12 @@ namespace ClientBizFlow_attemp_1.Database
                 entity.HasIndex(p => p.Name).IsUnique();
                 entity.Property(p => p.Price).HasColumnType("decimal(18,2)");
             });
+
+            modelBuilder
+                .Entity<BizFlowJournalRecord>()
+                .Property(e => e.TypeAction)
+                .HasConversion<string>()
+                .HasColumnType("text");
         }
     }
 }

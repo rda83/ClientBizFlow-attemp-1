@@ -1,7 +1,6 @@
 using BizFlow.Core.Contracts;
 using BizFlow.Core.Services.DI;
 using ClientBizFlow_attemp_1.Database;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClientBizFlow_attemp_1
@@ -21,8 +20,8 @@ namespace ClientBizFlow_attemp_1
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
             builder.Services.AddScoped<IPipelineService, PipelineService>();
+            builder.Services.AddScoped<IBizFlowJournal, BizFlowJournal>();
             builder.Services.AddBizFlow(typeof(Program).Assembly);
 
             var app = builder.Build();
