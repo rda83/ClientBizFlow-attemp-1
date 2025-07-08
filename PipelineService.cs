@@ -97,5 +97,16 @@ namespace ClientBizFlow_attemp_1
         {
             return _context.Pipelines.AnyAsync(i => i.Name == pipelineName, cancellationToken);
         }
+
+        public async Task DeletePipelineAsync(string pipelineName, CancellationToken cancellationToken = default)
+        {
+            var pipeLine = await _context.Pipelines
+                .Include(i => i.PipelineItems)
+                .FirstOrDefaultAsync(i => i.Name == pipelineName, cancellationToken)
+                    ?? throw new InvalidOperationException($"Pipeline with name '{pipelineName}' not found."); // TODO:i18n;
+
+            _context.Remove(pipeLine);
+            await _context.SaveChangesAsync();
+        }
     }
 }
