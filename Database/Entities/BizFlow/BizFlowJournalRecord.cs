@@ -21,5 +21,6 @@ namespace ClientBizFlow_attemp_1.Database.Entities.BizFlow
         public string LaunchId { get; set; }
         public string Message { get; set; }
         public string Trigger { get; set; }
+        public bool IsStartNowPipeline { get; set; }
     }
 }

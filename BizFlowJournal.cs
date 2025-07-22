@@ -25,6 +25,7 @@ namespace ClientBizFlow_attemp_1
             entity.LaunchId = record.LaunchId;
             entity.Message = record.Message;
             entity.Trigger = record.Trigger;
+            entity.IsStartNowPipeline = record.IsStartNowPipeline;
 
             await _context.BizFlowJournalRecords.AddAsync(entity, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
@@ -57,7 +58,8 @@ namespace ClientBizFlow_attemp_1
                 TypeOperationId = r.TypeOperationId,
                 LaunchId = r.LaunchId,
                 Message = r.Message,
-                Trigger = r.Trigger
+                Trigger = r.Trigger,
+                IsStartNowPipeline = r.IsStartNowPipeline,
             }).ToList();
 
             return dtos;
