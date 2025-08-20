@@ -26,6 +26,7 @@ namespace ClientBizFlow_attemp_1
             entity.Message = record.Message;
             entity.Trigger = record.Trigger;
             entity.IsStartNowPipeline = record.IsStartNowPipeline;
+            entity.ItemId = record.ItemId;
 
             await _context.BizFlowJournalRecords.AddAsync(entity, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
@@ -60,9 +61,56 @@ namespace ClientBizFlow_attemp_1
                 Message = r.Message,
                 Trigger = r.Trigger,
                 IsStartNowPipeline = r.IsStartNowPipeline,
+                ItemId = r.ItemId,
             }).ToList();
 
             return dtos;
+        }
+
+        public async Task<IEnumerable<BizFlowJournalRecord>> GetJournalRecordByLaunchId(string launchId,
+            CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrWhiteSpace(launchId))
+                throw new ArgumentException("Необходимо передать идентификатор запуска пайплайна", nameof(launchId));
+
+            var resut = await _context.BizFlowJournalRecords
+                .Where(i => i.LaunchId == launchId)
+                .AsNoTracking()
+                .ToListAsync(cancellationToken);
+
+            var dtos = resut.Select(r => new BizFlowJournalRecord
+            {
+                Period = r.Period,
+                PipelineName = r.PipelineName,
+                ItemDescription = r.ItemDescription,
+                ItemSortOrder = r.ItemSortOrder,
+                TypeAction = r.TypeAction,
+                TypeOperationId = r.TypeOperationId,
+                LaunchId = r.LaunchId,
+                Message = r.Message,
+                Trigger = r.Trigger,
+                IsStartNowPipeline = r.IsStartNowPipeline,
+                ItemId = r.ItemId,
+            }).ToList();
+
+            return dtos;
+        }
+
+        public async Task<string?> GetLastLaunchId(string pipelineName,
+            CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrWhiteSpace(pipelineName))
+                throw new ArgumentException("Необходимо передать имя пайплайна", nameof(pipelineName));
+
+            var lastAction = await _context.BizFlowJournalRecords
+                .Where(i => i.PipelineName == pipelineName)
+                .OrderByDescending(i => i.Period)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (lastAction == null) { return null; }
+
+            return lastAction.LaunchId;
         }
     }
 }

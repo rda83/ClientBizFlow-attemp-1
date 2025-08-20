@@ -28,6 +28,12 @@ namespace ClientBizFlow_attemp_1.Database
                 .Property(e => e.TypeAction)
                 .HasConversion<string>()
                 .HasColumnType("text");
+
+            modelBuilder.Entity<BizFlowJournalRecord>()
+                .HasIndex(i => i.PipelineName);
+
+            modelBuilder.Entity<BizFlowJournalRecord>()
+                .HasIndex(i => i.LaunchId);
         }
     }
 }

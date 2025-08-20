@@ -60,6 +60,7 @@ namespace ClientBizFlow_attemp_1
             pipeline.PipelineItems = entity.PipelineItems.Select(i =>
             {
                 var item = new PipelineItem();
+                item.Id = i.Id;
                 item.TypeOperationId = i.TypeOperationId;
                 item.SortOrder = i.SortOrder;
                 item.Description = i.Description;
