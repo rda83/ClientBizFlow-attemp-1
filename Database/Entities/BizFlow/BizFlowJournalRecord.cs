@@ -16,7 +16,7 @@ namespace ClientBizFlow_attemp_1.Database.Entities.BizFlow
         public int ItemSortOrder { get; set; }
 
         [Column(TypeName = "text")]
-        public TypeBizFlowJournaAction TypeAction { get; set; }
+        public TypeBizFlowJournalAction TypeAction { get; set; }
         public string TypeOperationId { get; set; }
         public string LaunchId { get; set; }
         public string Message { get; set; }

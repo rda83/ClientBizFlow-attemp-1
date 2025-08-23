@@ -77,7 +77,7 @@ namespace ClientBizFlow_attemp_1.Migrations
 
                     b.HasIndex("PipelineName");
 
-                    b.ToTable("BizFlowJournalRecords");
+                    b.ToTable("BizFlowJournalRecords", (string)null);
                 });
 
             modelBuilder.Entity("ClientBizFlow_attemp_1.Database.Entities.BizFlow.Pipeline", b =>
@@ -104,7 +104,7 @@ namespace ClientBizFlow_attemp_1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pipelines");
+                    b.ToTable("Pipelines", (string)null);
                 });
 
             modelBuilder.Entity("ClientBizFlow_attemp_1.Database.Entities.BizFlow.PipelineItem", b =>
@@ -137,7 +137,7 @@ namespace ClientBizFlow_attemp_1.Migrations
 
                     b.HasIndex("PipelineId");
 
-                    b.ToTable("PipelineItems");
+                    b.ToTable("PipelineItems", (string)null);
                 });
 
             modelBuilder.Entity("ClientBizFlow_attemp_1.Database.Entities.Common.Product", b =>
@@ -175,7 +175,7 @@ namespace ClientBizFlow_attemp_1.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("ClientBizFlow_attemp_1.Database.Entities.BizFlow.PipelineItem", b =>
