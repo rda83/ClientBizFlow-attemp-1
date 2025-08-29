@@ -13,7 +13,6 @@ namespace ClientBizFlow_attemp_1
             
             builder.Services.AddControllers();
 
-            // Learn more about configuring Swagger/OpenAPI at  https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -22,6 +21,7 @@ namespace ClientBizFlow_attemp_1
 
             builder.Services.AddScoped<IPipelineService, PipelineService>();
             builder.Services.AddScoped<IBizFlowJournal, BizFlowJournal>();
+            builder.Services.AddScoped<ICancelPipelineRequestService, CancelPipelineRequestService>();
             builder.Services.AddBizFlow(typeof(Program).Assembly);
 
             var app = builder.Build();

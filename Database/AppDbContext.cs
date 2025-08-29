@@ -14,6 +14,7 @@ namespace ClientBizFlow_attemp_1.Database
         public DbSet<PipelineItem> PipelineItems { get; set; }
         public DbSet<Pipeline> Pipelines { get; set; }
         public DbSet<BizFlowJournalRecord> BizFlowJournalRecords { get; set; }
+        public DbSet<CancelPipelineRequest> CancelPipelineRequests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

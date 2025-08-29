@@ -4,6 +4,7 @@ using System.Text.Json;
 using ClientBizFlow_attemp_1.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClientBizFlow_attemp_1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250826081004_ADD_250825_00_CancelPipelineRequest")]
+    partial class ADD_250825_00_CancelPipelineRequest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,16 +94,13 @@ namespace ClientBizFlow_attemp_1.Migrations
                     b.Property<bool>("ClosingByExpirationTimeOnly")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ExpirationTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("PipelineName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
