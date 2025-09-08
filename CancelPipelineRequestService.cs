@@ -29,5 +29,27 @@ namespace ClientBizFlow_attemp_1
 
             return requestEntity.Id;
         }
+
+        public async Task SetExecutedAsync(long id, string msg = "", CancellationToken cancellationToken = default)
+        {
+            var request = _context.CancelPipelineRequests.Where(i => i.Id == id && i.Executed == false)
+                .FirstOrDefault();
+
+            if (request != null)
+            {
+                request.Executed = true;
+                request.ClosingTime = DateTime.Now;
+                request.ClosedAfterExpirationDate = request.ExpirationTime <= request.ClosingTime;
+
+                if (!string.IsNullOrEmpty(msg))
+                    request.Description = $"[{msg}]{request.Description}";
+
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            else
+            {
+                throw new InvalidOperationException($"Запрос на отмену пайплайна: '{id}' не найден"); // TODO:i18n
+            }
+        }
     }
 }
