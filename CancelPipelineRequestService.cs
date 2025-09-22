@@ -1,6 +1,8 @@
 ﻿using BizFlow.Core.Contracts;
 using BizFlow.Core.Model;
 using ClientBizFlow_attemp_1.Database;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClientBizFlow_attemp_1
 {
@@ -28,6 +30,35 @@ namespace ClientBizFlow_attemp_1
             await _context.SaveChangesAsync(cancellationToken);
 
             return requestEntity.Id;
+        }
+
+        public async Task<CancelPipelineRequest?> GetActiveRequest(string pipelineName, CancellationToken cancellationToken = default)
+        {
+            var entitiy = await _context.CancelPipelineRequests
+                .Where(i => i.PipelineName == pipelineName)
+                .Where(i => i.ExpirationTime > DateTime.Now)
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+
+            if (entitiy == null)
+            {
+                return null;
+            }
+
+            var reuslt = new CancelPipelineRequest()
+            {
+                Id = entitiy.Id,
+                PipelineName = entitiy.PipelineName,
+                ExpirationTime = entitiy.ExpirationTime,
+                Description = entitiy.Description,
+                ClosingByExpirationTimeOnly = entitiy.ClosingByExpirationTimeOnly,
+                Created = entitiy.Created,
+                Executed = entitiy.Executed,
+                ClosingTime = entitiy.ClosingTime,
+                ClosedAfterExpirationDate = entitiy.ClosingByExpirationTimeOnly,
+            };
+
+            return reuslt;
         }
 
         public async Task SetExecutedAsync(long id, string msg = "", CancellationToken cancellationToken = default)
