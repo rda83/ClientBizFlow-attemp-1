@@ -10,12 +10,15 @@ namespace ClientBizFlow_attemp_1.Workers
         public Task Run(WorkerContext ctx)
         {
             var opt = GetOptions<FirstWorkerOpt>(ctx.Options);
-           
-            Console.WriteLine($"{ctx.PipelineName} - {ctx.CronExpression} - {ctx.TypeOperationId}");
 
-            Console.WriteLine($"{opt.Path}");
-            Console.WriteLine($"{opt.Count}");
-            Console.WriteLine($"{opt.ActiveOnly}");
+            for (int i = 0; i < 9; i++)
+            {
+                Console.WriteLine($"<FirstOperation {i}");
+                Console.WriteLine($"{ctx.PipelineName} - {ctx.CronExpression} - {ctx.TypeOperationId}");
+                Console.WriteLine($"{opt.Path} {opt.Count} {opt.ActiveOnly}");
+                Console.WriteLine($">FirstOperation {i}");
+                Thread.Sleep(10000);
+            }
 
             return Task.CompletedTask;
         }

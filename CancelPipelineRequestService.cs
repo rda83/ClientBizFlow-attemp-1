@@ -34,6 +34,7 @@ namespace ClientBizFlow_attemp_1
         public async Task<CancelPipelineRequest?> GetActiveRequest(string pipelineName, CancellationToken cancellationToken = default)
         {
             var entitiy = await _context.CancelPipelineRequests
+                .Where(i => i.Executed == false)
                 .Where(i => i.PipelineName == pipelineName)
                 .Where(i => i.ExpirationTime > DateTime.Now)
                 .AsNoTracking()

@@ -11,11 +11,14 @@ namespace ClientBizFlow_attemp_1.Workers
         {
             var opt = GetOptions<SecondWorkerOpt>(ctx.Options);
 
-            Console.WriteLine($"{ctx.PipelineName} - {ctx.CronExpression} - {ctx.TypeOperationId}");
-
-            Console.WriteLine($"{opt.Name}");
-            Console.WriteLine($"{opt.Age}");
-            Console.WriteLine($"{string.Join(",", opt.Ids)}");
+            for (int i = 0; i < 9; i++)
+            {
+                Console.WriteLine($"<SecondWorker {i}");
+                Console.WriteLine($"{ctx.PipelineName} - {ctx.CronExpression} - {ctx.TypeOperationId}");
+                Console.WriteLine($"{opt.Name} {opt.Age} {opt.Ids.ToString()}");
+                Console.WriteLine($">SecondWorker {i}");
+                Thread.Sleep(10000);
+            }
 
             return Task.CompletedTask;
         }
