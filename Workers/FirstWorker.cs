@@ -11,12 +11,12 @@ namespace ClientBizFlow_attemp_1.Workers
         {
             var opt = GetOptions<FirstWorkerOpt>(ctx.Options);
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Console.WriteLine($"<FirstOperation {i}");
-                Console.WriteLine($"{ctx.PipelineName} - {ctx.CronExpression} - {ctx.TypeOperationId}");
-                Console.WriteLine($"{opt.Path} {opt.Count} {opt.ActiveOnly}");
-                Console.WriteLine($">FirstOperation {i}");
+                //Console.WriteLine($"{ctx.PipelineName} - {ctx.CronExpression} - {ctx.TypeOperationId}");
+                //Console.WriteLine($"{opt.Path} {opt.Count} {opt.ActiveOnly}");
+                //Console.WriteLine($">FirstOperation {i}");
                 Thread.Sleep(10000);
             }
 
