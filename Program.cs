@@ -27,6 +27,22 @@ namespace ClientBizFlow_attemp_1
 
             var app = builder.Build();
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<AppDbContext>();
+                    context.Database.Migrate();
+                    Console.WriteLine("Database migrations applied successfully");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred while applying migrations: {ex.Message}");
+                    throw;
+                }
+            }
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
