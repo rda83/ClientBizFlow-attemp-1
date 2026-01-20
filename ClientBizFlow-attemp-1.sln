@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientBizFlow-attemp-1", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Core", "..\BizFlow\src\BizFlow.Core\BizFlow.Core.csproj", "{1374BEA7-C3C5-98A9-ADC0-FBD71EDD15B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Storage.PostgreSQL", "..\BizFlow\src\BizFlow.Storage.PostgreSQL\BizFlow.Storage.PostgreSQL.csproj", "{DD6B2D3D-6674-1146-5C43-283CBB41C330}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{1374BEA7-C3C5-98A9-ADC0-FBD71EDD15B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1374BEA7-C3C5-98A9-ADC0-FBD71EDD15B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1374BEA7-C3C5-98A9-ADC0-FBD71EDD15B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD6B2D3D-6674-1146-5C43-283CBB41C330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6B2D3D-6674-1146-5C43-283CBB41C330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6B2D3D-6674-1146-5C43-283CBB41C330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6B2D3D-6674-1146-5C43-283CBB41C330}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

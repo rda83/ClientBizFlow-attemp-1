@@ -1,5 +1,6 @@
 using BizFlow.Core.Contracts;
 using BizFlow.Core.Services.DI;
+using BizFlow.Storage.PostgreSQL;
 using ClientBizFlow_attemp_1.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +24,8 @@ namespace ClientBizFlow_attemp_1
             builder.Services.AddScoped<IPipelineService, PipelineService>();
             builder.Services.AddScoped<IBizFlowJournal, BizFlowJournal>();
             builder.Services.AddScoped<ICancelPipelineRequestService, CancelPipelineRequestService>();
+            
+            builder.Services.AddPostgreSQLBizFlowStorage();
             builder.Services.AddBizFlow(typeof(Program).Assembly);
 
             var app = builder.Build();
