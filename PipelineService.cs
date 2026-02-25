@@ -13,28 +13,28 @@ namespace ClientBizFlow_attemp_1
             _context = context;
         }
 
-        public async Task<IReadOnlyCollection<Pipeline>> GetPipelinesAsync(CancellationToken cancellationToken = default)
-        {
-            var result = new List<Pipeline>();
+        //public async Task<IReadOnlyCollection<Pipeline>> GetPipelinesAsync(CancellationToken cancellationToken = default)
+        //{
+        //    var result = new List<Pipeline>();
 
-            try
-            {
-                return await _context.Pipelines
-                    .AsNoTracking()
-                    .Select(entity => new Pipeline
-                    {
-                        Name = entity.Name,
-                        CronExpression = entity.CronExpression,
-                        Description = entity.Description,
-                        Blocked = entity.Blocked
-                    })
-                    .ToListAsync(cancellationToken);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //    try
+        //    {
+        //        return await _context.Pipelines
+        //            .AsNoTracking()
+        //            .Select(entity => new Pipeline
+        //            {
+        //                Name = entity.Name,
+        //                CronExpression = entity.CronExpression,
+        //                Description = entity.Description,
+        //                Blocked = entity.Blocked
+        //            })
+        //            .ToListAsync(cancellationToken);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
 
         public async Task<Pipeline?> GetPipelineAsync(string pipelineName, CancellationToken cancellationToken = default)
         {
@@ -72,32 +72,32 @@ namespace ClientBizFlow_attemp_1
             return pipeline;
         }
 
-        public async Task AddPipelineAsync(Pipeline pipelineItem, CancellationToken cancellationToken = default)
-        {
-            var pipelineEntity = new Database.Entities.BizFlow.Pipeline();
-            pipelineEntity.Name = pipelineItem.Name;
-            pipelineEntity.CronExpression = pipelineItem.CronExpression;
-            pipelineEntity.Description = pipelineItem.Description;
-            pipelineEntity.Blocked = pipelineItem.Blocked;
-            pipelineEntity.PipelineItems = pipelineItem.PipelineItems.Select(i =>
-            {
-                var item = new Database.Entities.BizFlow.PipelineItem();
-                item.TypeOperationId = i.TypeOperationId;
-                item.SortOrder = i.SortOrder;
-                item.Description = i.Description;
-                item.Blocked = i.Blocked;
-                item.Options = i.Options;
-                return item;
-            }).ToList();
+        //public async Task AddPipelineAsync(Pipeline pipelineItem, CancellationToken cancellationToken = default)
+        //{
+        //    var pipelineEntity = new Database.Entities.BizFlow.Pipeline();
+        //    pipelineEntity.Name = pipelineItem.Name;
+        //    pipelineEntity.CronExpression = pipelineItem.CronExpression;
+        //    pipelineEntity.Description = pipelineItem.Description;
+        //    pipelineEntity.Blocked = pipelineItem.Blocked;
+        //    pipelineEntity.PipelineItems = pipelineItem.PipelineItems.Select(i =>
+        //    {
+        //        var item = new Database.Entities.BizFlow.PipelineItem();
+        //        item.TypeOperationId = i.TypeOperationId;
+        //        item.SortOrder = i.SortOrder;
+        //        item.Description = i.Description;
+        //        item.Blocked = i.Blocked;
+        //        item.Options = i.Options;
+        //        return item;
+        //    }).ToList();
 
-            await _context.Pipelines.AddAsync(pipelineEntity, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
-        }
+        //    await _context.Pipelines.AddAsync(pipelineEntity, cancellationToken);
+        //    await _context.SaveChangesAsync(cancellationToken);
+        //}
 
-        public Task<bool> PipelineNameExist(string pipelineName, CancellationToken cancellationToken = default)
-        {
-            return _context.Pipelines.AnyAsync(i => i.Name == pipelineName, cancellationToken);
-        }
+        //public Task<bool> PipelineNameExist(string pipelineName, CancellationToken cancellationToken = default)
+        //{
+        //    return _context.Pipelines.AnyAsync(i => i.Name == pipelineName, cancellationToken);
+        //}
 
         public async Task DeletePipelineAsync(string pipelineName, CancellationToken cancellationToken = default)
         {
