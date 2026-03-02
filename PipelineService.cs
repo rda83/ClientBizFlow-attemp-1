@@ -36,41 +36,41 @@ namespace ClientBizFlow_attemp_1
         //    }
         //}
 
-        public async Task<Pipeline?> GetPipelineAsync(string pipelineName, CancellationToken cancellationToken = default)
-        {
-            if (string.IsNullOrEmpty(pipelineName))
-            {
-                throw new ArgumentException("Имя пайплайна не может быть пустым", nameof(pipelineName)); // TODO:i18n
-            }
+        //public async Task<Pipeline?> GetPipelineAsync(string pipelineName, CancellationToken cancellationToken = default)
+        //{
+        //    if (string.IsNullOrEmpty(pipelineName))
+        //    {
+        //        throw new ArgumentException("Имя пайплайна не может быть пустым", nameof(pipelineName)); // TODO:i18n
+        //    }
 
-            var query = _context.Pipelines.Where(i => i.Name == pipelineName)
-                .Include(i => i.PipelineItems)
-                .AsSplitQuery()
-                .AsNoTracking();
+        //    var query = _context.Pipelines.Where(i => i.Name == pipelineName)
+        //        .Include(i => i.PipelineItems)
+        //        .AsSplitQuery()
+        //        .AsNoTracking();
 
-            var entity = await query.FirstOrDefaultAsync(cancellationToken);
+        //    var entity = await query.FirstOrDefaultAsync(cancellationToken);
 
-            if (entity == null) { return null; }
+        //    if (entity == null) { return null; }
 
-            var pipeline = new Pipeline(); // TODO: Builder
-            pipeline.Name = entity.Name;
-            pipeline.CronExpression = entity.CronExpression;
-            pipeline.Description = entity.Description;
-            pipeline.Blocked = entity.Blocked;
-            pipeline.PipelineItems = entity.PipelineItems.Select(i =>
-            {
-                var item = new PipelineItem();
-                item.Id = i.Id;
-                item.TypeOperationId = i.TypeOperationId;
-                item.SortOrder = i.SortOrder;
-                item.Description = i.Description;
-                item.Blocked = i.Blocked;
-                item.Options = i.Options;
-                return item;
-            }).ToList();
+        //    var pipeline = new Pipeline(); // TODO: Builder
+        //    pipeline.Name = entity.Name;
+        //    pipeline.CronExpression = entity.CronExpression;
+        //    pipeline.Description = entity.Description;
+        //    pipeline.Blocked = entity.Blocked;
+        //    pipeline.PipelineItems = entity.PipelineItems.Select(i =>
+        //    {
+        //        var item = new PipelineItem();
+        //        item.Id = i.Id;
+        //        item.TypeOperationId = i.TypeOperationId;
+        //        item.SortOrder = i.SortOrder;
+        //        item.Description = i.Description;
+        //        item.Blocked = i.Blocked;
+        //        item.Options = i.Options;
+        //        return item;
+        //    }).ToList();
 
-            return pipeline;
-        }
+        //    return pipeline;
+        //}
 
         //public async Task AddPipelineAsync(Pipeline pipelineItem, CancellationToken cancellationToken = default)
         //{
