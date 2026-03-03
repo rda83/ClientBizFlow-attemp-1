@@ -21,7 +21,6 @@ namespace ClientBizFlow_attemp_1
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddScoped<IPipelineService, PipelineService>();
             builder.Services.AddScoped<IBizFlowJournal, BizFlowJournal>();
             builder.Services.AddScoped<ICancelPipelineRequestService, CancelPipelineRequestService>();
             
