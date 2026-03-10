@@ -13,7 +13,7 @@ namespace ClientBizFlow_attemp_1
             _context = context;
         }
 
-        public async Task AddRecordAsync(BizFlowJournalRecord record, CancellationToken cancellationToken = default)
+        public async Task AddRecordAsync(JournalRecord record, CancellationToken cancellationToken = default)
         {
             var entity = new Database.Entities.BizFlow.BizFlowJournalRecord();
             entity.Period = record.Period;
@@ -25,14 +25,14 @@ namespace ClientBizFlow_attemp_1
             entity.LaunchId = record.LaunchId;
             entity.Message = record.Message;
             entity.Trigger = record.Trigger;
-            entity.IsStartNowPipeline = record.IsStartNowPipeline;
+            entity.IsStartNowPipeline = record.IsStartNow;
             entity.ItemId = record.ItemId;
 
             await _context.BizFlowJournalRecords.AddAsync(entity, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<BizFlowJournalRecord>> GetPagedAsync(
+        public async Task<IEnumerable<JournalRecord>> GetPagedAsync(
             int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
             if (pageNumber < 1)
@@ -49,7 +49,7 @@ namespace ClientBizFlow_attemp_1
                 .Take(pageSize)
                 .ToListAsync();
 
-            var dtos = records.Select(r => new BizFlowJournalRecord
+            var dtos = records.Select(r => new JournalRecord
             {
                 Period = r.Period,
                 PipelineName = r.PipelineName,
@@ -60,14 +60,14 @@ namespace ClientBizFlow_attemp_1
                 LaunchId = r.LaunchId,
                 Message = r.Message,
                 Trigger = r.Trigger,
-                IsStartNowPipeline = r.IsStartNowPipeline,
+                IsStartNow = r.IsStartNowPipeline,
                 ItemId = r.ItemId,
             }).ToList();
 
             return dtos;
         }
 
-        public async Task<IEnumerable<BizFlowJournalRecord>> GetJournalRecordByLaunchId(string launchId,
+        public async Task<IEnumerable<JournalRecord>> GetJournalRecordByLaunchId(string launchId,
             CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrWhiteSpace(launchId))
@@ -78,7 +78,7 @@ namespace ClientBizFlow_attemp_1
                 .AsNoTracking()
                 .ToListAsync(cancellationToken);
 
-            var dtos = resut.Select(r => new BizFlowJournalRecord
+            var dtos = resut.Select(r => new JournalRecord
             {
                 Period = r.Period,
                 PipelineName = r.PipelineName,
@@ -89,7 +89,7 @@ namespace ClientBizFlow_attemp_1
                 LaunchId = r.LaunchId,
                 Message = r.Message,
                 Trigger = r.Trigger,
-                IsStartNowPipeline = r.IsStartNowPipeline,
+                IsStartNow = r.IsStartNowPipeline,
                 ItemId = r.ItemId,
             }).ToList();
 
