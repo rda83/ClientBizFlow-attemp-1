@@ -13,24 +13,6 @@ namespace ClientBizFlow_attemp_1
             _context = context;
         }
 
-        public async Task AddRecordAsync(JournalRecord record, CancellationToken cancellationToken = default)
-        {
-            var entity = new Database.Entities.BizFlow.BizFlowJournalRecord();
-            entity.Period = record.Period;
-            entity.PipelineName = record.PipelineName;
-            entity.ItemDescription = record.ItemDescription;
-            entity.ItemSortOrder = record.ItemSortOrder;
-            entity.TypeAction = record.TypeAction;
-            entity.TypeOperationId = record.TypeOperationId;
-            entity.LaunchId = record.LaunchId;
-            entity.Message = record.Message;
-            entity.Trigger = record.Trigger;
-            entity.IsStartNowPipeline = record.IsStartNow;
-            entity.ItemId = record.ItemId;
-
-            await _context.BizFlowJournalRecords.AddAsync(entity, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
-        }
 
         public async Task<IEnumerable<JournalRecord>> GetPagedAsync(
             int pageNumber, int pageSize, CancellationToken cancellationToken = default)
