@@ -13,42 +13,6 @@ namespace ClientBizFlow_attemp_1
             _context = context;
         }
 
-
-        public async Task<IEnumerable<JournalRecord>> GetPagedAsync(
-            int pageNumber, int pageSize, CancellationToken cancellationToken = default)
-        {
-            if (pageNumber < 1)
-                throw new ArgumentException("Номер страницы должен быть больше 0", nameof(pageNumber));
-
-            if (pageSize < 1)
-                throw new ArgumentException("Размер страницы должен быть больше 0", nameof(pageSize));
-
-            var query = _context.BizFlowJournalRecords
-                .OrderBy(x => x.Id);
-
-            var records = await query
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
-
-            var dtos = records.Select(r => new JournalRecord
-            {
-                Period = r.Period,
-                PipelineName = r.PipelineName,
-                ItemDescription = r.ItemDescription,
-                ItemSortOrder = r.ItemSortOrder,
-                TypeAction = r.TypeAction,
-                TypeOperationId = r.TypeOperationId,
-                LaunchId = r.LaunchId,
-                Message = r.Message,
-                Trigger = r.Trigger,
-                IsStartNow = r.IsStartNowPipeline,
-                ItemId = r.ItemId,
-            }).ToList();
-
-            return dtos;
-        }
-
         public async Task<IEnumerable<JournalRecord>> GetJournalRecordByLaunchId(string launchId,
             CancellationToken cancellationToken = default)
         {
