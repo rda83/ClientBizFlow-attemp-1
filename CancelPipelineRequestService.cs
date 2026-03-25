@@ -14,7 +14,7 @@ namespace ClientBizFlow_attemp_1
             _context = context;
         }
 
-        public async Task<long> AddAsync(CancelPipelineRequest request, CancellationToken cancellationToken = default)
+        public async Task<long> AddAsync(CancellationRequest request, CancellationToken cancellationToken = default)
         {
             var requestEntity = new Database.Entities.BizFlow.CancelPipelineRequest()
             {
@@ -31,7 +31,7 @@ namespace ClientBizFlow_attemp_1
             return requestEntity.Id;
         }
 
-        public async Task<CancelPipelineRequest?> GetActiveRequest(string pipelineName, CancellationToken cancellationToken = default)
+        public async Task<CancellationRequest?> GetActiveRequest(string pipelineName, CancellationToken cancellationToken = default)
         {
             var entitiy = await _context.CancelPipelineRequests
                 .Where(i => i.Executed == false)
@@ -45,7 +45,7 @@ namespace ClientBizFlow_attemp_1
                 return null;
             }
 
-            var reuslt = new CancelPipelineRequest()
+            var reuslt = new CancellationRequest()
             {
                 Id = entitiy.Id,
                 PipelineName = entitiy.PipelineName,
