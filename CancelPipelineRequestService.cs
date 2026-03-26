@@ -14,23 +14,6 @@ namespace ClientBizFlow_attemp_1
             _context = context;
         }
 
-        public async Task<long> AddAsync(CancellationRequest request, CancellationToken cancellationToken = default)
-        {
-            var requestEntity = new Database.Entities.BizFlow.CancelPipelineRequest()
-            {
-                PipelineName = request.PipelineName,
-                ExpirationTime = request.ExpirationTime,
-                Description = request.Description,
-                ClosingByExpirationTimeOnly = request.ClosingByExpirationTimeOnly,
-                Created = request.Created,
-            };
-
-            await _context.CancelPipelineRequests.AddAsync(requestEntity, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return requestEntity.Id;
-        }
-
         public async Task<CancellationRequest?> GetActiveRequest(string pipelineName, CancellationToken cancellationToken = default)
         {
             var entitiy = await _context.CancelPipelineRequests
