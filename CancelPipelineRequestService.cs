@@ -14,34 +14,34 @@ namespace ClientBizFlow_attemp_1
             _context = context;
         }
 
-        public async Task<CancellationRequest?> GetActiveRequest(string pipelineName, CancellationToken cancellationToken = default)
-        {
-            var entitiy = await _context.CancelPipelineRequests
-                .Where(i => i.Executed == false)
-                .Where(i => i.PipelineName == pipelineName)
-                .Where(i => i.ExpirationTime > DateTime.Now)
-                .AsNoTracking()
-                .FirstOrDefaultAsync();
+        //public async Task<CancellationRequest?> GetActiveRequest(string pipelineName, CancellationToken cancellationToken = default)
+        //{
+        //    var entitiy = await _context.CancelPipelineRequests
+        //        .Where(i => i.Executed == false)
+        //        .Where(i => i.PipelineName == pipelineName)
+        //        .Where(i => i.ExpirationTime > DateTime.Now)
+        //        .AsNoTracking()
+        //        .FirstOrDefaultAsync();
 
-            if (entitiy == null)
-            {
-                return null;
-            }
+        //    if (entitiy == null)
+        //    {
+        //        return null;
+        //    }
 
-            var reuslt = new CancellationRequest()
-            {
-                Id = entitiy.Id,
-                PipelineName = entitiy.PipelineName,
-                ExpirationTime = entitiy.ExpirationTime,
-                Description = entitiy.Description,
-                ClosingByExpirationTimeOnly = entitiy.ClosingByExpirationTimeOnly,
-                Created = entitiy.Created,
-                Executed = entitiy.Executed,
-                ClosingTime = entitiy.ClosingTime,
-                ClosedAfterExpirationDate = entitiy.ClosingByExpirationTimeOnly,
-            };
+        //    var reuslt = new CancellationRequest()
+        //    {
+        //        Id = entitiy.Id,
+        //        PipelineName = entitiy.PipelineName,
+        //        ExpirationTime = entitiy.ExpirationTime,
+        //        Description = entitiy.Description,
+        //        ClosingByExpirationTimeOnly = entitiy.ClosingByExpirationTimeOnly,
+        //        Created = entitiy.Created,
+        //        Executed = entitiy.Executed,
+        //        ClosingTime = entitiy.ClosingTime,
+        //        ClosedAfterExpirationDate = entitiy.ClosingByExpirationTimeOnly,
+        //    };
 
-            return reuslt;
-        }
+        //    return reuslt;
+        //}
     }
 }
