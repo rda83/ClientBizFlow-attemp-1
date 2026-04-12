@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11520.95 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientBizFlow-attemp-1", "ClientBizFlow-attemp-1.csproj", "{A7FFB5FD-4A32-4CEC-A3A2-C5D70DC1EA36}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -11,6 +11,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Core", "..\BizFlow\src\BizFlow.Core\BizFlow.Core.csproj", "{1374BEA7-C3C5-98A9-ADC0-FBD71EDD15B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Storage.PostgreSQL", "..\BizFlow\src\BizFlow.Storage.PostgreSQL\BizFlow.Storage.PostgreSQL.csproj", "{DD6B2D3D-6674-1146-5C43-283CBB41C330}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.IntegrationTests", "..\BizFlow\src\BizFlow.IntegrationTests\BizFlow.IntegrationTests.csproj", "{4A0789D8-3D07-4CE9-BBC2-04F3BD6DF947}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 		{DD6B2D3D-6674-1146-5C43-283CBB41C330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD6B2D3D-6674-1146-5C43-283CBB41C330}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD6B2D3D-6674-1146-5C43-283CBB41C330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A0789D8-3D07-4CE9-BBC2-04F3BD6DF947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A0789D8-3D07-4CE9-BBC2-04F3BD6DF947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A0789D8-3D07-4CE9-BBC2-04F3BD6DF947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A0789D8-3D07-4CE9-BBC2-04F3BD6DF947}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
