@@ -15,7 +15,6 @@ namespace ClientBizFlow_attemp_1.Database
         {
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.HasIndex(p => p.Name).IsUnique();
                 entity.Property(p => p.Price).HasColumnType("decimal(18,2)");
             });
 
