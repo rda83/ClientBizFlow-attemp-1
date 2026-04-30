@@ -24,8 +24,6 @@ namespace ClientBizFlow_attemp_1
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql());
 
-            builder.Services.AddScoped<ICancelPipelineRequestService, CancelPipelineRequestService>();
-
             builder.Services.AddPostgreSQLBizFlowStorage(connectionString!);
             builder.Services.AddBizFlow(typeof(Program).Assembly);
 
