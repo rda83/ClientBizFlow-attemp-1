@@ -18,12 +18,15 @@ namespace ClientBizFlow_attemp_1
             builder.Services.AddSwaggerGen();
 
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
             builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql());
 
             builder.Services.AddScoped<ICancelPipelineRequestService, CancelPipelineRequestService>();
-            
-            builder.Services.AddPostgreSQLBizFlowStorage();
+
+            builder.Services.AddPostgreSQLBizFlowStorage(connectionString!);
             builder.Services.AddBizFlow(typeof(Program).Assembly);
 
             var app = builder.Build();
