@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace ClientBizFlow_attemp_1.Workers
 {
-    [TypeOperationId("LoadProduct")]
+    [TypeOperationId("load-product")]
     public class LoadProductWorker : IBizFlowWorker
     {
         private readonly AppDbContext _appDb;
