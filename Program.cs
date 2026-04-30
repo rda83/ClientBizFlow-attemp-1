@@ -21,29 +21,28 @@ namespace ClientBizFlow_attemp_1
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-            builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseNpgsql());
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
             builder.Services.AddPostgreSQLBizFlowStorage(connectionString!);
             builder.Services.AddBizFlow(typeof(Program).Assembly);
 
             var app = builder.Build();
 
-            //using (var scope = app.Services.CreateScope())
-            //{
-            //    var services = scope.ServiceProvider;
-            //    try
-            //    {
-            //        var context = services.GetRequiredService<AppDbContext>();
-            //        context.Database.Migrate();
-            //        Console.WriteLine("Database migrations applied successfully");
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine($"An error occurred while applying migrations: {ex.Message}");
-            //        throw;
-            //    }
-            //}
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<AppDbContext>();
+                    context.Database.Migrate();
+                    Console.WriteLine("Database migrations applied successfully");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred while applying migrations: {ex.Message}");
+                    throw;
+                }
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
