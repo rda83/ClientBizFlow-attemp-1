@@ -10,6 +10,7 @@ namespace ClientBizFlow_attemp_1.Database
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Sale> Sales { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
