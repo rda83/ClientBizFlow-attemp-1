@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.3.11520.95 d18.3
+VisualStudioVersion = 18.3.11520.95
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientBizFlow-attemp-1", "ClientBizFlow-attemp-1.csproj", "{A7FFB5FD-4A32-4CEC-A3A2-C5D70DC1EA36}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -13,6 +13,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Storage.PostgreSQL", "..\BizFlow\src\BizFlow.Storage.PostgreSQL\BizFlow.Storage.PostgreSQL.csproj", "{DD6B2D3D-6674-1146-5C43-283CBB41C330}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.IntegrationTests", "..\BizFlow\src\BizFlow.IntegrationTests\BizFlow.IntegrationTests.csproj", "{4A0789D8-3D07-4CE9-BBC2-04F3BD6DF947}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Abstractions", "..\BizFlow\src\BizFlow.Abstractions\BizFlow.Abstractions.csproj", "{D75D7457-FE11-8628-9DA2-78A58541D590}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Schedules.Interval", "..\BizFlow\src\BizFlow.Schedules.Interval\BizFlow.Schedules.Interval.csproj", "{A1565400-A35A-EFCD-C6B4-1E9671B49056}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Extensions.DependencyInjection", "..\BizFlow\src\BizFlow.Extensions.DependencyInjection\BizFlow.Extensions.DependencyInjection.csproj", "{688A4A7A-8CD4-012E-D8BB-59435E1D25DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +42,18 @@ Global
 		{4A0789D8-3D07-4CE9-BBC2-04F3BD6DF947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A0789D8-3D07-4CE9-BBC2-04F3BD6DF947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A0789D8-3D07-4CE9-BBC2-04F3BD6DF947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D75D7457-FE11-8628-9DA2-78A58541D590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D75D7457-FE11-8628-9DA2-78A58541D590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D75D7457-FE11-8628-9DA2-78A58541D590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D75D7457-FE11-8628-9DA2-78A58541D590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1565400-A35A-EFCD-C6B4-1E9671B49056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1565400-A35A-EFCD-C6B4-1E9671B49056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1565400-A35A-EFCD-C6B4-1E9671B49056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1565400-A35A-EFCD-C6B4-1E9671B49056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{688A4A7A-8CD4-012E-D8BB-59435E1D25DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688A4A7A-8CD4-012E-D8BB-59435E1D25DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688A4A7A-8CD4-012E-D8BB-59435E1D25DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688A4A7A-8CD4-012E-D8BB-59435E1D25DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

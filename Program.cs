@@ -1,7 +1,10 @@
 using BizFlow.Core.Contracts;
 using BizFlow.Core.Services.DI;
+using BizFlow.Extensions.DependencyInjection;
+using BizFlow.Schedules.Interval;
 using BizFlow.Storage.PostgreSQL;
 using ClientBizFlow_attemp_1.Database;
+using ClientBizFlow_attemp_1.Workers;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClientBizFlow_attemp_1
@@ -23,8 +26,16 @@ namespace ClientBizFlow_attemp_1
 
             builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
-            builder.Services.AddPostgreSQLBizFlowStorage(connectionString!);
-            builder.Services.AddBizFlow(typeof(Program).Assembly);
+            //builder.Services.AddPostgreSQLBizFlowStorage(connectionString!);
+            //builder.Services.AddBizFlow(typeof(Program).Assembly);
+
+
+            builder.Services.AddWorker("cleanup",
+                _ => new PrintMessageWorkers(),
+                _ => new IntervalSchedule(TimeSpan.FromSeconds(5)));
+
+
+            builder.Services.AddBizFlowScheduler();
 
             var app = builder.Build();
 
