@@ -1,6 +1,7 @@
 using BizFlow.Core.Contracts;
 using BizFlow.Core.Services.DI;
 using BizFlow.Extensions.DependencyInjection;
+using BizFlow.Schedules.Cron;
 using BizFlow.Schedules.Interval;
 using BizFlow.Storage.PostgreSQL;
 using ClientBizFlow_attemp_1.Database;
@@ -30,9 +31,14 @@ namespace ClientBizFlow_attemp_1
             //builder.Services.AddBizFlow(typeof(Program).Assembly);
 
 
+            //builder.Services.AddWorker("cleanup",
+            //    _ => new PrintMessageWorkers(),
+            //    _ => new IntervalSchedule(TimeSpan.FromSeconds(5)));
+
             builder.Services.AddWorker("cleanup",
                 _ => new PrintMessageWorkers(),
-                _ => new IntervalSchedule(TimeSpan.FromSeconds(5)));
+                _ => new CronSchedule("*/5 * * * *", TimeZoneInfo.Local));
+
 
 
             builder.Services.AddBizFlowScheduler();

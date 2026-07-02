@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BizFlow\src\BizFlow.Core\BizFlow.Core.csproj" />
     <ProjectReference Include="..\BizFlow\src\BizFlow.Extensions.DependencyInjection\BizFlow.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\BizFlow\src\BizFlow.Schedules.Cron\BizFlow.Schedules.Cron.csproj" />
     <ProjectReference Include="..\BizFlow\src\BizFlow.Schedules.Interval\BizFlow.Schedules.Interval.csproj" />
     <ProjectReference Include="..\BizFlow\src\BizFlow.Storage.PostgreSQL\BizFlow.Storage.PostgreSQL.csproj" />
   </ItemGroup>
