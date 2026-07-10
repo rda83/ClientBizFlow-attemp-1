@@ -7,6 +7,7 @@ using BizFlow.Storage.PostgreSQL;
 using ClientBizFlow_attemp_1.Database;
 using ClientBizFlow_attemp_1.Workers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace ClientBizFlow_attemp_1
 {
@@ -31,15 +32,51 @@ namespace ClientBizFlow_attemp_1
             //builder.Services.AddBizFlow(typeof(Program).Assembly);
 
 
-            //builder.Services.AddWorker("cleanup",
+            //builder.Services.AddWorker("cleanup_interval_short",
             //    _ => new PrintMessageWorkers(),
             //    _ => new IntervalSchedule(TimeSpan.FromSeconds(5)));
 
-            builder.Services.AddWorker("cleanup",
+            //builder.Services.AddWorker("cleanup_interval_long",
+            //    _ => new PrintMessageWorkers(),
+            //    _ => new IntervalSchedule(TimeSpan.FromSeconds(50)));
+
+
+            //Allowed values    Allowed special characters Comment
+
+            //┌───────────── second(optional)       0 - 59 * , - / H
+            //│ ┌───────────── minute                0 - 59 * , - / H
+            //│ │ ┌───────────── hour                0 - 23 * , - / H
+            //│ │ │ ┌───────────── day of month      1 - 31 * , - / H L W ?                
+            //│ │ │ │ ┌───────────── month           1 - 12 or JAN-DEC * , - / H
+            //│ │ │ │ │ ┌───────────── day of week   0 - 6  or SUN-SAT * , - / H # L ?              Both 0 and 7 means SUN
+            //│ │ │ │ │ │
+            //* * * * * *
+
+
+
+
+
+            builder.Services.AddWorker("cleanup_cron",
                 _ => new PrintMessageWorkers(),
-                _ => new CronSchedule("*/5 * * * *", TimeZoneInfo.Local));
+                _ => new CronSchedule("*/5 * * * *", TimeZoneInfo.Utc));
 
 
+            //builder.Services.AddWorker("cleanup_cron_13",
+            //    _ => new PrintMessageWorkers(),
+            //    _ => new CronSchedule("* 13 * * * ", TimeZoneInfo.Utc));
+
+            //builder.Services.AddWorker("cleanup_cron_14",
+            //    _ => new PrintMessageWorkers(),
+            //    _ => new CronSchedule("* 14 * * * ", TimeZoneInfo.Utc));
+
+            //builder.Services.AddWorker("cleanup_cron_15",
+            //    _ => new PrintMessageWorkers(),
+            //    _ => new CronSchedule("* 15 * * * ", TimeZoneInfo.Utc));
+
+
+            //builder.Services.AddWorker("cleanup_cron_13",
+            //    _ => new PrintMessageWorkers(),
+            //    _ => new CronSchedule("50 2 * * * ", TimeZoneInfo.Utc));
 
             builder.Services.AddBizFlowScheduler();
 
