@@ -119,7 +119,7 @@ namespace ClientBizFlow_attemp_1
                     pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
                     {
                         Name = "test",
-                        Schedule = new CronSchedule("50 2 * * * ", TimeZoneInfo.Utc)
+                        Schedule = new IntervalSchedule(TimeSpan.FromSeconds(5))
                     });
 
 
