@@ -1,3 +1,4 @@
+using BizFlow.Abstractions;
 using BizFlow.Core.Contracts;
 using BizFlow.Core.Services.DI;
 using BizFlow.Extensions.DependencyInjection;
@@ -80,16 +81,17 @@ namespace ClientBizFlow_attemp_1
 
 
 
-            // Регистрация воркеров:
-            builder.Services.AddBizFlowWorkers(typeof(Program).Assembly); 
-
-
-            
-
-            // Регистрация пайплайнов в цикле через builder.Services.AddPipeline
-
+            // Регистрация воркеров (должно быть частью AddBizFlowScheduler):
+            builder.Services.AddBizFlowWorkers(typeof(Program).Assembly);
 
             builder.Services.AddBizFlowScheduler();
+
+            //services.AddHostedService<JobBootstrapper>();
+            // Регистрация пайплайнов:
+            // IJobBootstrapper + отдельный проект, т.к. есть возможность сделать напрямую: IBizFlowPipelineRegistry.Create(PipelineDefinition pipeline)
+
+
+
 
             var app = builder.Build();
 
@@ -101,6 +103,23 @@ namespace ClientBizFlow_attemp_1
                     var context = services.GetRequiredService<AppDbContext>();
                     context.Database.Migrate();
                     Console.WriteLine("Database migrations applied successfully");
+
+                    //// AddWorker -> AddPipeline (получается коллекция расписаний в памяти), возможно это сервис какой то должен быть
+                    //// его будет запрашивать BizFlowScheduler в своем цикле
+                    //public static IServiceCollection AddPipeline(this IServiceCollection services, string name,
+                    //    Func<IServiceProvider, IWorker> workerFactory, Func<IServiceProvider, ISchedule> scheduleFactory)
+                    //{
+                    //    //services.AddSingleton(sp => new PipelineDefinition(name,
+                    //    //    workerFactory(sp), scheduleFactory(sp)));
+
+                    //    return services;
+                    //}
+
+                    var pipelineRegistry = services.GetRequiredService<IBizFlowPipelineRegistry>();
+                    pipelineRegistry.Create(new BizFlow.Abstractions.Model.PipelineDefinition());
+
+
+
                 }
                 catch (Exception ex)
                 {
