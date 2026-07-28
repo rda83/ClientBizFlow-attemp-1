@@ -78,7 +78,17 @@ namespace ClientBizFlow_attemp_1
             //    _ => new PrintMessageWorkers(),
             //    _ => new CronSchedule("50 2 * * * ", TimeZoneInfo.Utc));
 
-            builder.Services.AddBizFlowWorkers(typeof(Program).Assembly);
+
+            
+
+            builder.Services.AddBizFlowWorkers(typeof(Program).Assembly); // Регистрация воркеров
+
+
+            
+
+            // Регистрация пайплайнов в цикле через builder.Services.AddPipeline
+
+
             builder.Services.AddBizFlowScheduler();
 
             var app = builder.Build();
