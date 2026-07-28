@@ -56,9 +56,9 @@ namespace ClientBizFlow_attemp_1
 
 
 
-            builder.Services.AddWorker("cleanup_cron",
-                _ => new PrintMessageWorkers(),
-                _ => new CronSchedule("*/5 * * * *", TimeZoneInfo.Utc));
+            //builder.Services.AddWorker("cleanup_cron",
+            //    _ => new PrintMessageWorkers(),
+            //    _ => new CronSchedule("*/5 * * * *", TimeZoneInfo.Utc));
 
 
             //builder.Services.AddWorker("cleanup_cron_13",
@@ -78,6 +78,7 @@ namespace ClientBizFlow_attemp_1
             //    _ => new PrintMessageWorkers(),
             //    _ => new CronSchedule("50 2 * * * ", TimeZoneInfo.Utc));
 
+            builder.Services.AddBizFlowWorkers(typeof(Program).Assembly);
             builder.Services.AddBizFlowScheduler();
 
             var app = builder.Build();

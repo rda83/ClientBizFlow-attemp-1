@@ -1,4 +1,6 @@
-﻿using BizFlow.Core.Contracts;
+﻿using BizFlow.Abstractions;
+using BizFlow.Abstractions.Model;
+using BizFlow.Core.Contracts;
 using BizFlow.Core.Model;
 using Bogus;
 using ClientBizFlow_attemp_1.Database;
@@ -8,7 +10,7 @@ using System.Text.Json;
 namespace ClientBizFlow_attemp_1.Workers
 {
     [TypeOperationId("load-product")]
-    public class LoadProductWorker : IBizFlowWorker
+    public class LoadProductWorker : IWorker
     {
         private readonly AppDbContext _appDb;
 
@@ -92,6 +94,11 @@ namespace ClientBizFlow_attemp_1.Workers
         public T? GetOptions<T>(JsonElement? options) where T : class
         {
             return options?.Deserialize<T>() ?? null;
+        }
+
+        public Task ExecuteAsync(WorkerContext ctx, CancellationToken ct)
+        {
+            throw new NotImplementedException();
         }
     }
 
