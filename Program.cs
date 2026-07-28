@@ -115,8 +115,12 @@ namespace ClientBizFlow_attemp_1
                     //    return services;
                     //}
 
-                    //var pipelineRegistry = services.GetRequiredService<IBizFlowPipelineRegistry>();
-                    //pipelineRegistry.Create(new BizFlow.Abstractions.Model.PipelineDefinition());
+                    var pipelineRegistry = services.GetRequiredService<IBizFlowPipelineRegistry>();
+                    pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
+                    {
+                        Name = "test",
+                        Schedule = new CronSchedule("50 2 * * * ", TimeZoneInfo.Utc)
+                    });
 
 
 
