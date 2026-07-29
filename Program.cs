@@ -84,7 +84,7 @@ namespace ClientBizFlow_attemp_1
             // Регистрация воркеров (должно быть частью AddBizFlowScheduler):
             builder.Services.AddBizFlowWorkers(typeof(Program).Assembly);
 
-            builder.Services.AddBizFlowScheduler();
+            builder.Services.AddBizFlowScheduler((opt) => opt.EnableExecutionJournal = true);
 
             //services.AddHostedService<JobBootstrapper>();
             // Регистрация пайплайнов:
@@ -115,7 +115,7 @@ namespace ClientBizFlow_attemp_1
                     //    return services;
                     //}
 
-                    var pipelineRegistry = services.GetRequiredService<IBizFlowPipelineRegistry>();
+                    var pipelineRegistry = services.GetRequiredService<IPipelineRegistry>();
                     pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
                     {
                         Name = "test",
