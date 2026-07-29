@@ -42,11 +42,11 @@ namespace ClientBizFlow_attemp_1.Workers
             int skip = 0;
             while (true)
             {
-                if (ctx.CancellationToken.IsCancellationRequested)
-                {
-                    Console.WriteLine("Сообщение от воркера: LoadSalesWorker - операция отменена.");
-                    break;
-                }
+                //if (ctx.CancellationToken.IsCancellationRequested)
+                //{
+                //    Console.WriteLine("Сообщение от воркера: LoadSalesWorker - операция отменена.");
+                //    break;
+                //}
 
                 await Task.Delay(opt!.DelayMs);
 

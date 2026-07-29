@@ -119,7 +119,14 @@ namespace ClientBizFlow_attemp_1
                     pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
                     {
                         Name = "test",
-                        Schedule = new IntervalSchedule(TimeSpan.FromSeconds(5))
+                        Schedule = new IntervalSchedule(TimeSpan.FromSeconds(5)),
+                        PipelineItems = new List<BizFlow.Abstractions.Model.PipelineItem>()
+                        {
+                            new BizFlow.Abstractions.Model.PipelineItem()
+                            {
+                                TypeOperationId = "print-message"
+                            }
+                        }
                     });
 
 
