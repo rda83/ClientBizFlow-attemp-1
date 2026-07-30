@@ -1,6 +1,7 @@
 using BizFlow.Abstractions;
 using BizFlow.Core.Contracts;
 using BizFlow.Core.Services.DI;
+using BizFlow.ExecutionJournal.Logger;
 using BizFlow.Extensions.DependencyInjection;
 using BizFlow.Schedules.Cron;
 using BizFlow.Schedules.Interval;
@@ -83,7 +84,7 @@ namespace ClientBizFlow_attemp_1
 
             // Регистрация воркеров (должно быть частью AddBizFlowScheduler):
             builder.Services.AddBizFlowWorkers(typeof(Program).Assembly);
-
+            builder.Services.AddExecutionJournalLogger();
             builder.Services.AddBizFlowScheduler((opt) => opt.EnableExecutionJournal = true);
 
             //services.AddHostedService<JobBootstrapper>();
@@ -124,7 +125,8 @@ namespace ClientBizFlow_attemp_1
                         {
                             new BizFlow.Abstractions.Model.PipelineItem()
                             {
-                                TypeOperationId = "print-message"
+                                TypeOperationId = "print-message",
+                                Description = "Распечатка сообщения.",
                             }
                         }
                     });

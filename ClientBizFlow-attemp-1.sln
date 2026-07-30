@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Extensions.Dependen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Schedules.Cron", "..\BizFlow\src\BizFlow.Schedules.Cron\BizFlow.Schedules.Cron.csproj", "{4BFA5A7B-3633-1A29-36FC-40891C73F296}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.ExecutionJournal.Logger", "..\BizFlow\src\BizFlow.ExecutionJournal.Logger\BizFlow.ExecutionJournal.Logger.csproj", "{B3A8932D-755A-CEB4-EC03-D970DBC9B381}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.ExecutionJournal.Database", "..\BizFlow\src\BizFlow.ExecutionJournal.Database\BizFlow.ExecutionJournal.Database.csproj", "{D9D47889-7BC2-C460-47A4-B83BEC471881}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +64,14 @@ Global
 		{4BFA5A7B-3633-1A29-36FC-40891C73F296}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BFA5A7B-3633-1A29-36FC-40891C73F296}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BFA5A7B-3633-1A29-36FC-40891C73F296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A8932D-755A-CEB4-EC03-D970DBC9B381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A8932D-755A-CEB4-EC03-D970DBC9B381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A8932D-755A-CEB4-EC03-D970DBC9B381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A8932D-755A-CEB4-EC03-D970DBC9B381}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9D47889-7BC2-C460-47A4-B83BEC471881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9D47889-7BC2-C460-47A4-B83BEC471881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9D47889-7BC2-C460-47A4-B83BEC471881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9D47889-7BC2-C460-47A4-B83BEC471881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

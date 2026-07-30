@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BizFlow\src\BizFlow.Core\BizFlow.Core.csproj" />
+    <ProjectReference Include="..\BizFlow\src\BizFlow.ExecutionJournal.Database\BizFlow.ExecutionJournal.Database.csproj" />
+    <ProjectReference Include="..\BizFlow\src\BizFlow.ExecutionJournal.Logger\BizFlow.ExecutionJournal.Logger.csproj" />
     <ProjectReference Include="..\BizFlow\src\BizFlow.Extensions.DependencyInjection\BizFlow.Extensions.DependencyInjection.csproj" />
     <ProjectReference Include="..\BizFlow\src\BizFlow.Schedules.Cron\BizFlow.Schedules.Cron.csproj" />
     <ProjectReference Include="..\BizFlow\src\BizFlow.Schedules.Interval\BizFlow.Schedules.Interval.csproj" />
