@@ -105,31 +105,21 @@ namespace ClientBizFlow_attemp_1
                     context.Database.Migrate();
                     Console.WriteLine("Database migrations applied successfully");
 
-                    //// AddWorker -> AddPipeline (получается коллекция расписаний в памяти), возможно это сервис какой то должен быть
-                    //// его будет запрашивать BizFlowScheduler в своем цикле
-                    //public static IServiceCollection AddPipeline(this IServiceCollection services, string name,
-                    //    Func<IServiceProvider, IWorker> workerFactory, Func<IServiceProvider, ISchedule> scheduleFactory)
+
+                    //var pipelineRegistry = services.GetRequiredService<IPipelineRegistry>();
+                    //pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
                     //{
-                    //    //services.AddSingleton(sp => new PipelineDefinition(name,
-                    //    //    workerFactory(sp), scheduleFactory(sp)));
-
-                    //    return services;
-                    //}
-
-                    var pipelineRegistry = services.GetRequiredService<IPipelineRegistry>();
-                    pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
-                    {
-                        Name = "test",
-                        Schedule = new IntervalSchedule(TimeSpan.FromSeconds(5)),
-                        PipelineItems = new List<BizFlow.Abstractions.Model.PipelineItem>()
-                        {
-                            new BizFlow.Abstractions.Model.PipelineItem()
-                            {
-                                TypeOperationId = "print-message",
-                                Description = "Распечатка сообщения.",
-                            }
-                        }
-                    });
+                    //    Name = "test",
+                    //    Schedule = new IntervalSchedule(TimeSpan.FromSeconds(5)),
+                    //    PipelineItems = new List<BizFlow.Abstractions.Model.PipelineItem>()
+                    //    {
+                    //        new BizFlow.Abstractions.Model.PipelineItem()
+                    //        {
+                    //            TypeOperationId = "print-message",
+                    //            Description = "Распечатка сообщения.",
+                    //        }
+                    //    }
+                    //});
 
 
 
