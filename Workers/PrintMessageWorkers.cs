@@ -7,9 +7,13 @@ namespace ClientBizFlow_attemp_1.Workers
     [TypeOperationId("print-message")]
     public class PrintMessageWorkers : IWorker
     {
-        public async Task ExecuteAsync(WorkerContext ctx, CancellationToken cancellationToken)
+        public Task ExecuteAsync(WorkerContext ctx, CancellationToken ct)
         {
+            ct.ThrowIfCancellationRequested();
+
             Console.WriteLine($"Current UTC time: {DateTime.UtcNow}.");
+
+            return Task.CompletedTask;
         }
 
         public T? GetOptions<T>(JsonElement? options) where T : class
