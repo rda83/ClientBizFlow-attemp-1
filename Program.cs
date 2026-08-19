@@ -106,11 +106,11 @@ namespace ClientBizFlow_attemp_1
                     Console.WriteLine("Database migrations applied successfully");
 
 
-                    //var pipelineRegistry = services.GetRequiredService<IPipelineRegistry>();
+                    var pipelineRegistry = services.GetRequiredService<IPipelineRegistry>();
                     //pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
                     //{
                     //    Name = "test",
-                    //    Schedule = new IntervalSchedule(TimeSpan.FromSeconds(5)),
+                    //    Schedule = new IntervalSchedule(TimeSpan.FromSeconds(15)),
                     //    PipelineItems = new List<BizFlow.Abstractions.Model.PipelineItem>()
                     //    {
                     //        new BizFlow.Abstractions.Model.PipelineItem()
@@ -120,6 +120,27 @@ namespace ClientBizFlow_attemp_1
                     //        }
                     //    }
                     //});
+
+                    pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
+                    {
+                        Name = "test",
+                        Schedule = new IntervalSchedule(TimeSpan.FromSeconds(30)),
+                        PipelineItems = new List<BizFlow.Abstractions.Model.PipelineItem>()
+                        {
+                            new BizFlow.Abstractions.Model.PipelineItem()
+                            {
+                                TypeOperationId = "not-process-cancellation-token-1",
+                                Description = "Без обработки токена (1)",
+                                SortOrder = 1,
+                            },
+                            new BizFlow.Abstractions.Model.PipelineItem()
+                            {
+                                TypeOperationId = "not-process-cancellation-token-2",
+                                Description = "Без обработки токена (2)",
+                                SortOrder = 2,
+                            }
+                        }
+                    });
 
 
 
