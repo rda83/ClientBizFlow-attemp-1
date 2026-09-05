@@ -123,8 +123,8 @@ namespace ClientBizFlow_attemp_1
 
                     pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
                     {
-                        Name = "test",
-                        Schedule = new IntervalSchedule(TimeSpan.FromSeconds(30)),
+                        Name = "TEST",
+                        Schedule = new IntervalSchedule(TimeSpan.FromSeconds(300)),
                         PipelineItems = new List<BizFlow.Abstractions.Model.PipelineItem>()
                         {
                             new BizFlow.Abstractions.Model.PipelineItem()
@@ -133,12 +133,6 @@ namespace ClientBizFlow_attemp_1
                                 Description = "Без обработки токена (1)",
                                 SortOrder = 1,
                             },
-                            new BizFlow.Abstractions.Model.PipelineItem()
-                            {
-                                TypeOperationId = "not-process-cancellation-token-2",
-                                Description = "Без обработки токена (2)",
-                                SortOrder = 2,
-                            }
                         }
                     });
 

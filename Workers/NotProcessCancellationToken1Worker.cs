@@ -11,7 +11,7 @@ namespace ClientBizFlow_attemp_1.Workers
         {
             for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine($"[ - {i} - ] Current UTC time: {DateTime.UtcNow}. not-process-cancellation-token-1");
+                Console.WriteLine($"not-process-cancellation-token-1 [ - {i} - ] Current UTC time: {DateTime.UtcNow}.");
                 await Task.Delay(1000);
             }
         }
