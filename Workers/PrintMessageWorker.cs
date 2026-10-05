@@ -13,6 +13,7 @@ namespace ClientBizFlow_attemp_1.Workers
 
             for (int i = 0; i < 10; i++)
             {
+                ct.ThrowIfCancellationRequested();
                 Console.WriteLine($"print-message [ - {i} - ] Current UTC time: {DateTime.UtcNow}.");
                 await Task.Delay(1000, ct);
             }                   
