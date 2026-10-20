@@ -121,20 +121,20 @@ namespace ClientBizFlow_attemp_1
                     //    }
                     //});
 
-                    pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
-                    {
-                        Name = "TEST",
-                        Schedule = new IntervalSchedule(TimeSpan.FromSeconds(60)),
-                        PipelineItems = new List<BizFlow.Abstractions.Model.PipelineItem>()
-                        {
-                            new BizFlow.Abstractions.Model.PipelineItem()
-                            {
-                                TypeOperationId = "not-process-cancellation-token-1",
-                                Description = "Без обработки токена (1)",
-                                SortOrder = 1,
-                            },
-                        }
-                    });
+                    //pipelineRegistry.Create(new BizFlow.Abstractions.Model.Pipeline()
+                    //{
+                    //    Name = "delay-3min-pipeline",
+                    //    Schedule = new CronSchedule("45,46,47,48 * * * *", TimeZoneInfo.Utc),
+                    //    PipelineItems = new List<BizFlow.Abstractions.Model.PipelineItem>()
+                    //    {
+                    //        new BizFlow.Abstractions.Model.PipelineItem()
+                    //        {
+                    //            TypeOperationId = "delay-3min",
+                    //            Description = "Процесс длительностью 5 минут",
+                    //            SortOrder = 1,
+                    //        },
+                    //    }
+                    //});
 
 
 
