@@ -1,11 +1,13 @@
 ﻿using BizFlow.Abstractions;
-using BizFlow.Core.Contracts.Storage;
+using BizFlow.Abstractions.Model;
+//using BizFlow.Core.Contracts.Storage;
 using BizFlow.Core.Internal.Features.AddPipeline;
 using BizFlow.Core.Internal.Features.CancelPipeline;
 using BizFlow.Core.Internal.Features.DeletePipeline;
 using BizFlow.Core.Internal.Features.StartNowPipeline;
 using BizFlow.Core.Internal.Features.StatusPipeline;
 using BizFlow.Core.Model;
+using BizFlow.Infrastructure.Abstractions;
 using BizFlow.Schedules.Interval;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,14 +32,16 @@ namespace ClientBizFlow_attemp_1.Controllers
         public async Task<IActionResult> CreatePipelineAsync(AddPipelineCommand command,
             [FromServices] IAddPipelineHandler addPipelineHandler)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            throw new NotImplementedException();
 
-            var result = await addPipelineHandler.AddPipelineAsync(command);
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            return Ok(result);
+            //var result = await addPipelineHandler.AddPipelineAsync(command);
+
+            //return Ok(result);
         }
 
         /// <summary>

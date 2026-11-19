@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.ExecutionJournal.Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.ExecutionJournal.Database", "..\BizFlow\src\BizFlow.ExecutionJournal.Database\BizFlow.ExecutionJournal.Database.csproj", "{D9D47889-7BC2-C460-47A4-B83BEC471881}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizFlow.Infrastructure.Abstractions", "..\BizFlow\src\BizFlow.Infrastructure.Abstractions\BizFlow.Infrastructure.Abstractions.csproj", "{D45B166C-A0CE-403B-98EF-733AD661CA47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{D9D47889-7BC2-C460-47A4-B83BEC471881}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9D47889-7BC2-C460-47A4-B83BEC471881}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9D47889-7BC2-C460-47A4-B83BEC471881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D45B166C-A0CE-403B-98EF-733AD661CA47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D45B166C-A0CE-403B-98EF-733AD661CA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D45B166C-A0CE-403B-98EF-733AD661CA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D45B166C-A0CE-403B-98EF-733AD661CA47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
