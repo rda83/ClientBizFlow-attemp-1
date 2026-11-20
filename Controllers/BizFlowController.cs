@@ -7,7 +7,7 @@ using BizFlow.Core.Internal.Features.DeletePipeline;
 using BizFlow.Core.Internal.Features.StartNowPipeline;
 using BizFlow.Core.Internal.Features.StatusPipeline;
 using BizFlow.Core.Model;
-using BizFlow.Infrastructure.Abstractions;
+using BizFlow.Infrastructure.Abstractions.Storage;
 using BizFlow.Schedules.Interval;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
